@@ -7,8 +7,7 @@ import html from 'remark-html';
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export function getSortedPostsData() {
-
-  if(false === fs.existsSync(postsDirectory)) {
+  if (false === fs.existsSync(postsDirectory)) {
     return [];
   }
 
@@ -42,6 +41,10 @@ export function getSortedPostsData() {
 }
 
 export function getAllPostIds() {
+  if (false === fs.existsSync(postsDirectory)) {
+    return [];
+  }
+
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => {
     return {
